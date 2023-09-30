@@ -6,7 +6,10 @@ return {
 	},
 	config = function()
 		-- import comment plugin safely
-		local comment = require("Comment")
+		local status, comment = pcall(require, "Comment")
+		if not status then
+			return
+		end
 
 		local ts_context_commentstring = require("ts_context_commentstring.integrations.comment_nvim")
 

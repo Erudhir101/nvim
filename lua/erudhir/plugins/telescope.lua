@@ -1,18 +1,26 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
+	event = "VimEnter",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"nvim-telescope/telescope-file-browser.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		--"nvim-tree/nvim-web-devicons",
+		"nvim-tree/nvim-web-devicons",
 	},
-	event = { "VimEnter" },
 	config = function()
-		local telescope = require("telescope")
+		local status, telescope = pcall(require, "telescope")
+		if not status then
+			return
+		end
 		local actions = require("telescope.actions")
 		local builtin = require("telescope.builtin")
 
-		telescope.load_extension("fzf")
+		local function telescope_buffer_dir()
+			return vim.fn.expand("%:p:h")
+		end
+
+		local fb_actions = telescope.extensions.file_browser.actions
 
 		telescope.setup({
 			defaults = {
@@ -24,63 +32,83 @@ return {
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 					},
 				},
-				vimpgrep_arguments = {
-					"rg",
-					"--color=never",
-					"--no-heading",
-					"--with-filename",
-					"--line-number",
-					"--column",
-					"--smart-case",
-					"--hidden",
-				},
-				file_ignore_patterns = {
-					"node_modules/",
-					"%.git/",
-					"%.DS_Store$",
-					"target/",
-					"build/",
-					"%.o$",
-				},
-				color_devicons = true,
-			},
-			pickers = {
-				find_files = { hidden = true },
-				live_grep = {
-					-- @usage don't include the filename in the search results
-					only_sort_text = true,
-				},
 			},
 			extensions = {
-				fzf = {
-					fuzzy = true,
-					override_generic_sorter = true,
-					override_file_sorter = true,
-					case_mode = "smart_case",
+				file_browser = {
+					file_browser = {
+						theme = "dropdown",
+						-- disables netrw and use telescope-file-browser in its place
+						hijack_netrw = true,
+						mappings = {
+							-- your custom insert mode mappings
+							["i"] = {
+								["<C-w>"] = function()
+									vim.cmd("normal vbd")
+								end,
+							},
+							["n"] = {
+								-- your custom normal mode mappings
+								["N"] = fb_actions.create,
+								["h"] = fb_actions.goto_parent_dir,
+								["/"] = function()
+									vim.cmd("startinsert")
+								end,
+								["<C-u>"] = function(prompt_bufnr)
+									for i = 1, 10 do
+										actions.move_selection_previous(prompt_bufnr)
+									end
+								end,
+								["<C-d>"] = function(prompt_bufnr)
+									for i = 1, 10 do
+										actions.move_selection_next(prompt_bufnr)
+									end
+								end,
+								["<PageUp>"] = actions.preview_scrolling_up,
+								["<PageDown>"] = actions.preview_scrolling_down,
+							},
+						},
+					},
 				},
 			},
 		})
+
+		telescope.load_extension("fzf")
+		telescope.load_extension("file_browser")
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
 
 		keymap.set("n", ";f", function()
-			builtin.find_files({})
-		end)
+			builtin.find_files({ no_ignore = false, hidden = true })
+		end, { desc = "Fuzzy find files in cwd" })
+
 		keymap.set("n", ";r", function()
+			builtin.resume()
+		end, { desc = "Fuzzy find recent files" })
+
+		keymap.set("n", ";g", function()
 			builtin.live_grep()
-		end)
-		keymap.set("n", ";b", function()
-			builtin.buffers()
-		end)
+		end, { desc = "Find string in cwd" })
+
 		keymap.set("n", ";t", function()
 			builtin.help_tags()
-		end)
-		keymap.set("n", ";;", function()
-			builtin.resume()
-		end)
-		keymap.set("n", ";e", function()
+		end, { desc = "Find tags in files" })
+
+		keymap.set("n", ";d", function()
 			builtin.diagnostics()
-		end)
+		end, { desc = "Find all diagnostics" })
+
+		keymap.set("n", ";e", function()
+			telescope.extensions.file_browser.file_browser({
+				path = "%:p:h",
+				cwd = telescope_buffer_dir(),
+				respect_gitignore = false,
+				hidden = true,
+				grouped = true,
+				previewer = false,
+				initial_mode = "normal",
+				layout_config = { height = 40 },
+			})
+		end, { desc = "Open File Browser" })
 	end,
 }
