@@ -1,10 +1,9 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
-	event = "VimEnter",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-file-browser.nvim",
+		{ "nvim-telescope/telescope-file-browser.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
 	},
@@ -13,6 +12,7 @@ return {
 		if not status then
 			return
 		end
+
 		local actions = require("telescope.actions")
 		local builtin = require("telescope.builtin")
 
@@ -24,12 +24,68 @@ return {
 
 		telescope.setup({
 			defaults = {
-				path_display = { "truncate" },
+				path_display = { "smart" },
+				file_ignore_patterns = {
+					"%.7z",
+					"%.burp",
+					"%.bz2",
+					"%.cache",
+					"%.class",
+					"%.dll",
+					"%.docx",
+					"%.dylib",
+					"%.epub",
+					"%.exe",
+					"%.flac",
+					"%.ico",
+					"%.ipynb",
+					"%.jar",
+					"%.lock",
+					"%.met",
+					"%.mkv",
+					"%.mp4",
+					"%.otf",
+					"%.pdb",
+					"%.pdf",
+					"%.rar",
+					"%.sqlite3",
+					"%.svg",
+					"%.tar",
+					"%.tar.gz",
+					"%.ttf",
+					"%.webp",
+					"%.zip",
+					".dart_tool/",
+					".github/",
+					".gradle/",
+					".idea/",
+					".settings/",
+					".vale/",
+					".vscode/",
+					"__pycache__/",
+					"__pycache__/*",
+					"build/",
+					"docs/",
+					"env/",
+					"gradle/",
+					"node_modules/",
+					"node_modules/*",
+					"smalljre_*/*",
+					"target/",
+					"vendor/*",
+					-- "%.jpeg",
+					-- "%.jpg",
+					-- "%.png",
+					".git/",
+				},
 				mappings = {
 					i = {
-						["<C-k>"] = actions.move_selection_previous, -- move to prev result
-						["<C-j>"] = actions.move_selection_next, -- move to next result
-						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+						-- ["<C-k>"] = actions.move_selection_previous, -- move to prev result
+						-- ["<C-j>"] = actions.move_selection_next, -- move to next result
+						["<C-q>"] = actions.close,
+					},
+					n = {
+						["<C-q>"] = actions.close,
 					},
 				},
 			},
@@ -98,6 +154,10 @@ return {
 			builtin.diagnostics()
 		end, { desc = "Find all diagnostics" })
 
+		keymap.set("n", ";b", function()
+			builtin.buffers()
+		end, { desc = "Find all buffers" })
+
 		keymap.set("n", ";e", function()
 			telescope.extensions.file_browser.file_browser({
 				path = "%:p:h",
@@ -106,7 +166,7 @@ return {
 				hidden = true,
 				grouped = true,
 				previewer = false,
-				initial_mode = "normal",
+				initial_mode = "insert",
 				layout_config = { height = 40 },
 			})
 		end, { desc = "Open File Browser" })

@@ -1,5 +1,6 @@
 return {
 	"hrsh7th/nvim-cmp",
+	-- lazy = true,
 	event = "InsertEnter",
 	dependencies = {
 		"hrsh7th/cmp-buffer", -- source for text in buffer
@@ -16,7 +17,6 @@ return {
 		end
 
 		local luasnip = require("luasnip")
-
 		local lspkind = require("lspkind")
 
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)

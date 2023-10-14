@@ -12,7 +12,7 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x', { desc = "delete without copy to buffer" })
 
-keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "toogle explore" })
+-- keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "toogle explore" })
 
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move block of code to up" })
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move block of code to down" })
@@ -44,6 +44,5 @@ keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }
 keymap.set("n", "<leader>te", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
 keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
 
--- keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
--- keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
--- keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+keymap.set("n", "<Tab>", "<cmd>tabnext<CR>", { desc = "Go to next tab" }) --  go to next tab
+keymap.set("n", "<S-Tab>", "<cmd>tabprevious<CR>", { desc = "Go to previous tab" }) --  go to next tab
