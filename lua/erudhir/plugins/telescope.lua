@@ -1,10 +1,10 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	event = "VeryLazy",
 	branch = "0.1.x",
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-file-browser.nvim" },
+		-- { "nvim-telescope/telescope-file-browser.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
 	},
@@ -21,7 +21,7 @@ return {
 			return vim.fn.expand("%:p:h")
 		end
 
-		local fb_actions = telescope.extensions.file_browser.actions
+		-- local fb_actions = telescope.extensions.file_browser.actions
 
 		telescope.setup({
 			defaults = {
@@ -91,46 +91,46 @@ return {
 				},
 			},
 			extensions = {
-				file_browser = {
-					file_browser = {
-						theme = "dropdown",
-						-- disables netrw and use telescope-file-browser in its place
-						hijack_netrw = true,
-						mappings = {
-							-- your custom insert mode mappings
-							["i"] = {
-								["<C-w>"] = function()
-									vim.cmd("normal vbd")
-								end,
-							},
-							["n"] = {
-								-- your custom normal mode mappings
-								["N"] = fb_actions.create,
-								["h"] = fb_actions.goto_parent_dir,
-								["/"] = function()
-									vim.cmd("startinsert")
-								end,
-								["<C-u>"] = function(prompt_bufnr)
-									for i = 1, 10 do
-										actions.move_selection_previous(prompt_bufnr)
-									end
-								end,
-								["<C-d>"] = function(prompt_bufnr)
-									for i = 1, 10 do
-										actions.move_selection_next(prompt_bufnr)
-									end
-								end,
-								["<PageUp>"] = actions.preview_scrolling_up,
-								["<PageDown>"] = actions.preview_scrolling_down,
-							},
-						},
-					},
-				},
+				-- 	file_browser = {
+				-- 		file_browser = {
+				-- 			theme = "dropdown",
+				-- 			-- disables netrw and use telescope-file-browser in its place
+				-- 			hijack_netrw = true,
+				-- 			mappings = {
+				-- 				-- your custom insert mode mappings
+				-- 				["i"] = {
+				-- 					["<C-w>"] = function()
+				-- 						vim.cmd("normal vbd")
+				-- 					end,
+				-- 				},
+				-- 				["n"] = {
+				-- 					-- your custom normal mode mappings
+				-- 					["N"] = fb_actions.create,
+				-- 					["h"] = fb_actions.goto_parent_dir,
+				-- 					["/"] = function()
+				-- 						vim.cmd("startinsert")
+				-- 					end,
+				-- 					["<C-u>"] = function(prompt_bufnr)
+				-- 						for i = 1, 10 do
+				-- 							actions.move_selection_previous(prompt_bufnr)
+				-- 						end
+				-- 					end,
+				-- 					["<C-d>"] = function(prompt_bufnr)
+				-- 						for i = 1, 10 do
+				-- 							actions.move_selection_next(prompt_bufnr)
+				-- 						end
+				-- 					end,
+				-- 					["<PageUp>"] = actions.preview_scrolling_up,
+				-- 					["<PageDown>"] = actions.preview_scrolling_down,
+				-- 				},
+				-- 			},
+				-- 		},
+				-- 	},
 			},
 		})
 
 		telescope.load_extension("fzf")
-		telescope.load_extension("file_browser")
+		-- telescope.load_extension("file_browser")
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
@@ -159,17 +159,17 @@ return {
 			builtin.buffers()
 		end, { desc = "Find all buffers" })
 
-		keymap.set("n", ";e", function()
-			telescope.extensions.file_browser.file_browser({
-				path = "%:p:h",
-				cwd = telescope_buffer_dir(),
-				respect_gitignore = false,
-				hidden = true,
-				grouped = true,
-				previewer = false,
-				initial_mode = "insert",
-				layout_config = { height = 40 },
-			})
-		end, { desc = "Open File Browser" })
+		-- keymap.set("n", ";e", function()
+		-- 	telescope.extensions.file_browser.file_browser({
+		-- 		path = "%:p:h",
+		-- 		cwd = telescope_buffer_dir(),
+		-- 		respect_gitignore = false,
+		-- 		hidden = true,
+		-- 		grouped = true,
+		-- 		previewer = false,
+		-- 		initial_mode = "insert",
+		-- 		layout_config = { height = 40 },
+		-- 	})
+		-- end, { desc = "Open File Browser" })
 	end,
 }

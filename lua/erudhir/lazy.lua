@@ -14,8 +14,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("erudhir.plugins", {
 	-- defaults = { lazy = true },
 	version = "*",
-	install = { missing = 300, colorscheme = { "catppuccin" } },
-	checker = { enabled = true },
+	install = { colorscheme = { "catppuccin" } },
+	-- install = { missing = 300, colorscheme = { "catppuccin" } },
+	checker = { enabled = true, notify = false },
 	change_detection = {
 		notify = false,
 	},
@@ -23,7 +24,7 @@ require("lazy").setup("erudhir.plugins", {
 		cache = {
 			enabled = true,
 			path = vim.fn.stdpath("cache") .. "/lazy/cache",
-			disable_events = { "UIEnter, BufReadPre" },
+			-- disable_events = { "UIEnter, BufReadPre" },
 		},
 		reset_packpath = true,
 		rtp = {
@@ -31,6 +32,7 @@ require("lazy").setup("erudhir.plugins", {
 				"gzip",
 				"matchit",
 				"matchparen",
+				"netrw",
 				"netrwPlugin",
 				"tarPlugin",
 				"tohtml",

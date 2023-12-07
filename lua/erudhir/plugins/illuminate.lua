@@ -1,5 +1,5 @@
 return {
-	"RRethy/vim-illuminate",
+	"RRethy/vim-illuminate", -- iluminate selected term
 	event = "BufReadPost",
 	config = function()
 		local status, illu = pcall(require, "illuminate")

@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
 		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate",
 		dependencies = {
@@ -47,12 +48,10 @@ return {
 					"vim",
 					"yaml",
 				},
-				-- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
-				context_commentstring = {
-					enable = true,
-					enable_autocmd = false,
-				},
 			})
+
+			-- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
+			require("ts_context_commentstring").setup({})
 		end,
 	},
 }

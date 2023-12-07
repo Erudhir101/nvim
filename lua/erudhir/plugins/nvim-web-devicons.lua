@@ -1,6 +1,6 @@
 return {
 	"nvim-tree/nvim-web-devicons",
-	lazy = true,
+	-- lazy = true,
 	config = function()
 		local status, devicons = pcall(require, "nvim-web-devicons")
 		if not status then
