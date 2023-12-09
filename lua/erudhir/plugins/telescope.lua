@@ -1,11 +1,13 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	cmd = "Telescope",
 	branch = "0.1.x",
 	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		-- { "nvim-telescope/telescope-file-browser.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		"nvim-telescope/telescope-symbols.nvim",
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
