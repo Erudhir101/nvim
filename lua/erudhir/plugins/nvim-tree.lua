@@ -4,6 +4,9 @@ return {
 	keys = { "<space>e" },
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
+		vim.g.loaded_netrw = 1
+		vim.g.loaded_netrwPlugin = 1
+
 		local keymap = vim.keymap
 		local status, tree = pcall(require, "nvim-tree")
 		if not status then
@@ -80,7 +83,7 @@ return {
 					restrict_above_cwd = false,
 				},
 				open_file = {
-					quit_on_open = false,
+					quit_on_open = true,
 					resize_window = false,
 					window_picker = {
 						enable = true,
@@ -109,9 +112,6 @@ return {
 				},
 			},
 		})
-		keymap.set("n", "<space>e", require("nvim-tree.api").tree.toggle, {
-			silent = true,
-			desc = "toggle nvim-tree",
-		})
+		keymap.set("n", "<space>e", require("nvim-tree.api").tree.toggle, { silent = true, desc = "toggle nvim-tree" })
 	end,
 }
