@@ -8,9 +8,8 @@ return {
 			if not status then
 				return
 			end
-
 			colorTheme.setup({
-				transparent_background = false, -- disables setting the background color.
+				transparent_background = true, -- disables setting the background color.
 			})
 			-- load the colorscheme here
 			vim.cmd([[colorscheme catppuccin]])

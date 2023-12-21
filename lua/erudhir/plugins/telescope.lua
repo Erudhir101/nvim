@@ -5,7 +5,6 @@ return {
 	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		-- { "nvim-telescope/telescope-file-browser.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-telescope/telescope-symbols.nvim",
 		"nvim-tree/nvim-web-devicons",
@@ -18,12 +17,6 @@ return {
 
 		local actions = require("telescope.actions")
 		local builtin = require("telescope.builtin")
-
-		local function telescope_buffer_dir()
-			return vim.fn.expand("%:p:h")
-		end
-
-		-- local fb_actions = telescope.extensions.file_browser.actions
 
 		telescope.setup({
 			defaults = {
@@ -83,16 +76,16 @@ return {
 				},
 				mappings = {
 					i = {
-						-- ["<C-k>"] = actions.move_selection_previous, -- move to prev result
-						-- ["<C-j>"] = actions.move_selection_next, -- move to next result
-						["<C-q>"] = actions.close,
+						-- ["<c-k>"] = actions.move_selection_previous, -- move to prev result
+						-- ["<c-j>"] = actions.move_selection_next, -- move to next result
+						["<c-q>"] = actions.close,
 					},
 					n = {
-						["<C-q>"] = actions.close,
+						["<c-q>"] = actions.close,
 					},
 				},
 			},
-			dynamic_preview_title = true,
+			dynamicepreview_title = true,
 			pickers = {
 				find_files = {
 					hidden = true,
@@ -107,7 +100,6 @@ return {
 		})
 
 		telescope.load_extension("fzf")
-		-- telescope.load_extension("file_browser")
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
@@ -135,18 +127,5 @@ return {
 		keymap.set("n", ";b", function()
 			builtin.buffers()
 		end, { desc = "Find all buffers" })
-
-		-- keymap.set("n", ";e", function()
-		-- 	telescope.extensions.file_browser.file_browser({
-		-- 		path = "%:p:h",
-		-- 		cwd = telescope_buffer_dir(),
-		-- 		respect_gitignore = false,
-		-- 		hidden = true,
-		-- 		grouped = true,
-		-- 		previewer = false,
-		-- 		initial_mode = "insert",
-		-- 		layout_config = { height = 40 },
-		-- 	})
-		-- end, { desc = "Open File Browser" })
 	end,
 }

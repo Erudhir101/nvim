@@ -23,7 +23,7 @@ require("lazy").setup("erudhir.plugins", {
 	performance = {
 		cache = {
 			enabled = true,
-			path = vim.fn.stdpath("cache") .. "/lazy/cache",
+			-- path = vim.fn.stdpath("cache") .. "/lazy/cache",
 			-- disable_events = { "UIEnter, BufReadPre" },
 		},
 		reset_packpath = true,
