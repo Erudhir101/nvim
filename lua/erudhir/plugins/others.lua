@@ -11,6 +11,10 @@ return {
 		end,
 	},
 	{
+		"nvim-zh/better-escape.vim",
+		event = { "InsertEnter" },
+	},
+	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		opts = {},

@@ -22,6 +22,7 @@ return {
 
 		-- enable mason and configure icons
 		mason.setup({
+			PATH = "prepend", -- "skip" seems to cause the spawning error
 			ui = {
 				icons = {
 					package_installed = "✓",
