@@ -104,6 +104,7 @@ return {
       options = {
         globalstatus = false,
         theme = "catppuccin",
+        -- theme = "solarized-osaka",
       },
     },
   },

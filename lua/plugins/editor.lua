@@ -49,6 +49,21 @@ return {
       },
     },
   },
+  {
+
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+      filesystem = {
+        follow_current_file = {
+          enabled = true, -- This will find and focus the file in the active buffer every
+        },
+        -- time the current file is changed while the tree is open.
+        group_empty_dirs = true, -- when true, empty folders will be grouped together
+        hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
+      },
+    },
+  },
 
   {
     "dinhhuy258/git.nvim",
@@ -84,8 +99,7 @@ return {
       {
         ";f",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.find_files({
+          require("telescope.builtin").find_files({
             no_ignore = false,
             hidden = true,
           })
@@ -95,8 +109,7 @@ return {
       {
         ";g",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.live_grep({
+          require("telescope.builtin").live_grep({
             additional_args = { "--hidden" },
           })
         end,
@@ -105,59 +118,50 @@ return {
       {
         ";b",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.buffers()
+          require("telescope.builtin").buffers()
         end,
         desc = "Lists open buffers",
       },
       {
         ";t",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.help_tags()
+          require("telescope.builtin").help_tags()
         end,
         desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
       },
       {
         ";r",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.resume()
+          require("telescope.builtin").resume()
         end,
         desc = "Resume the previous telescope picker",
       },
       {
         ";d",
         function()
-          local builtin = require("telescope.builtin")
-          builtin.diagnostics()
+          require("telescope.builtin").diagnostics()
         end,
         desc = "Lists Diagnostics for all open buffers or a specific buffer",
       },
     },
     config = function(_, opts)
       local telescope = require("telescope")
-      local actions = require("telescope.actions")
 
       opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
         wrap_results = true,
         layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
+        layout_config = {
+          horizontal = {
+            prompt_position = "top",
+            preview_width = 0.5,
+          },
+          width = 0.8,
+          height = 0.8,
+          preview_cutoff = 120,
+        },
         sorting_strategy = "ascending",
         winblend = 0,
-        mappings = {
-          n = {},
-        },
       })
-      opts.pickers = {
-        diagnostics = {
-          theme = "ivy",
-          initial_mode = "normal",
-          layout_config = {
-            preview_cutoff = 9999,
-          },
-        },
-      }
       telescope.setup(opts)
       require("telescope").load_extension("fzf")
     end,

@@ -9,7 +9,8 @@ return {
         return
       end
       colorTheme.setup({
-        transparent_background = true,
+        -- flavour = "latte",
+        -- transparent_background = true,
         integrations = {
           aerial = true,
           alpha = true,
@@ -46,8 +47,18 @@ return {
           which_key = true,
         },
       })
-      -- load the colorscheme here
-      -- vim.cmd([[colorscheme catppuccin]])
     end,
   },
+  -- {
+  --   "craftzdog/solarized-osaka.nvim",
+  --   lazy = true,
+  --   priority = 1000,
+  --   config = function()
+  --     local status, theme = pcall(require, "solarized-osaka")
+  --     if not status then
+  --       return
+  --     end
+  --     theme.setup({ transparent = false })
+  --   end,
+  -- },
 }
