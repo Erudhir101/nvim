@@ -1,12 +1,7 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
 -- set leader key to space
 vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
-local opts = { noremap = true, silent = true }
 
 ---------------------
 -- General Keymaps -------------------
@@ -16,9 +11,8 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x', { desc = "delete without copy to buffer" })
-keymap.set("n", "<leader>d", '"_d', { desc = "delete without copy to buffer" })
 
--- keymap.set("n", "<leader>e", ":Explore", { desc = "toogle explore" })
+-- keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "toogle explore" })
 
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move block of code to up" })
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move block of code to down" })
@@ -32,7 +26,7 @@ keymap.set("n", "N", "Nzzzv", { desc = "move the selection code up but in the ce
 keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "rename the register" })
 
 -- clear search highlights
-keymap.set("n", "<leader>.", ":nohl<Return>", { desc = "Clear search highlights" })
+keymap.set("n", "<leader>.", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- select all
 keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "select all text" })
@@ -41,23 +35,14 @@ keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "select all text" })
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
--- New tab
-keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+-- window management
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
--- Split window
-keymap.set("n", "ss", ":split<Return>", opts)
-keymap.set("n", "sv", ":vsplit<Return>", opts)
+keymap.set("n", "<leader>te", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
+keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
 
--- Move window
-keymap.set("n", "sh", "<C-w>h")
-keymap.set("n", "sk", "<C-w>k")
-keymap.set("n", "sj", "<C-w>j")
-keymap.set("n", "sl", "<C-w>l")
-
--- Resize window
-keymap.set("n", "<C-w><left>", "<C-w><")
-keymap.set("n", "<C-w><right>", "<C-w>>")
-keymap.set("n", "<C-w><up>", "<C-w>+")
-keymap.set("n", "<C-w><down>", "<C-w>-")
+keymap.set("n", "<Tab>", "<cmd>tabnext<CR>", { desc = "Go to next tab" }) --  go to next tab
+keymap.set("n", "<S-Tab>", "<cmd>tabprevious<CR>", { desc = "Go to previous tab" }) --  go to next tab

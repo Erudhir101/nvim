@@ -1,7 +1,5 @@
 local opt = vim.opt -- for conciseness
 
-vim.g.mapleader = " "
-
 -- encoding
 vim.scriptencoding = "utf-8"
 opt.encoding = "utf-8"
