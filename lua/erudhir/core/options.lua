@@ -59,3 +59,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- Highlight on yank
+vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = false}")
