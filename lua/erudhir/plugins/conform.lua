@@ -3,7 +3,10 @@ return {
 	lazy = true,
 	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
 	config = function()
-		local conform = require("conform")
+		local status, conform = pcall(require, "conform")
+		if not status then
+			return
+		end
 
 		conform.setup({
 			formatters_by_ft = {
@@ -24,7 +27,7 @@ return {
 			format_on_save = {
 				lsp_fallback = true,
 				async = false,
-				timeout_ms = 1000,
+				timeout_ms = 500,
 			},
 		})
 
@@ -32,7 +35,7 @@ return {
 			conform.format({
 				lsp_fallback = true,
 				async = false,
-				timeout_ms = 1000,
+				timeout_ms = 500,
 			})
 		end, { desc = "Format file or range (in visual mode)" })
 	end,

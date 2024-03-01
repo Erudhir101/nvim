@@ -17,7 +17,7 @@ return {
 		-- import mason-lspconfig
 		local mason_lspconfig = require("mason-lspconfig")
 
-		-- import mason-null-ls
+		-- import null
 		local mason_tool_installer = require("mason-tool-installer")
 
 		-- enable mason and configure icons
@@ -48,18 +48,14 @@ return {
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
 		})
-
 		mason_tool_installer.setup({
-			-- list of formatters & linters for mason to install
 			ensure_installed = {
-				"prettier", -- ts/js formatter
+				"prettier", -- js formatter
 				"stylua", -- lua formatter
-				"black",
-				"eslint_d", -- ts/js linter
-				-- "eslint-language-server",
+				"black", -- python formatter
+				"pylint", -- python linter
+				"eslint_d", -- js linter
 			},
-			-- auto-install configured servers (with lspconfig)
-			automatic_installation = true,
 		})
 	end,
 }
