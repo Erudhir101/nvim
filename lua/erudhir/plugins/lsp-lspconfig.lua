@@ -145,6 +145,14 @@ return {
 		lspconfig["rust_analyzer"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			filetypes = { "rust" },
+			settings = {
+				["rust-analyzer"] = {
+					cargo = {
+						allFeatures = true,
+					},
+				},
+			},
 		})
 
 		-- configure lua server (with special settings)
