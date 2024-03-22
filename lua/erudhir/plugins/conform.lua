@@ -24,6 +24,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				rust = { "rustfmt" },
+				c = { "ast_grep" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
