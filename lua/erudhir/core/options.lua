@@ -18,7 +18,7 @@ opt.softtabstop = 2 -- 2 spaces for tabs soft (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
-opt.smartindent = true -- make a smart indent
+opt.smartindent = true -- make a smart indentop
 
 -- line wrapping
 opt.wrap = false -- disable line wrapping
@@ -62,3 +62,6 @@ opt.swapfile = false
 
 -- Highlight on yank
 vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = false}")
+
+-- tree setting in explore
+vim.cmd("let g:netrw_liststyle = 3")

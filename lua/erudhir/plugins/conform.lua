@@ -1,6 +1,6 @@
 return {
 	"stevearc/conform.nvim",
-	lazy = true,
+	-- lazy = true,
 	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
 	config = function()
 		local status, conform = pcall(require, "conform")
@@ -23,7 +23,7 @@ return {
 				graphql = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				rust = { "rustfmt" },
+				rust = { "ast_grep" },
 				c = { "ast_grep" },
 			},
 			format_on_save = {

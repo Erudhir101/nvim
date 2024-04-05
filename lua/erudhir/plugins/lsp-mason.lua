@@ -1,8 +1,5 @@
 return {
 	"williamboman/mason.nvim",
-	-- event = "VeryLazy",
-	event = { "BufReadPre", "BufNewFile" },
-	-- cmd = "Mason",
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -55,6 +52,7 @@ return {
 				"black", -- python formatter
 				"pylint", -- python linter
 				"eslint_d", -- js linter
+				"ast_grep", -- c / rust / java formatter - linter
 			},
 		})
 	end,
