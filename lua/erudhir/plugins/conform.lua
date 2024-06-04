@@ -1,6 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	-- lazy = true,
+	-- version = "5.7.0",
 	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
 	config = function()
 		local status, conform = pcall(require, "conform")
