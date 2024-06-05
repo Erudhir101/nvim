@@ -1,5 +1,6 @@
 return {
 	"nvim-tree/nvim-tree.lua",
+	-- enabled = false,
 	lazy = "VeryLazy",
 	keys = { "<space>e" },
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -112,6 +113,10 @@ return {
 				},
 			},
 		})
-		keymap.set("n", "<space>e", require("nvim-tree.api").tree.toggle, { silent = true, desc = "toggle nvim-tree" })
+
+		local api = require("nvim-tree.api")
+		keymap.set("n", "<space>e", api.tree.toggle, { silent = true, desc = "toggle nvim-tree" })
+		keymap.set("n", "<C-]>", api.tree.change_root_to_node, { silent = true, desc = "gonna folder children" })
+		keymap.set("n", "<C-[>", api.tree.change_root_to_parent, { silent = true, desc = "gonna folder parent" })
 	end,
 }
