@@ -23,7 +23,7 @@ keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move cod to up but the view in the
 keymap.set("n", "n", "nzzzv", { desc = "move the selection code down but in the center" })
 keymap.set("n", "N", "Nzzzv", { desc = "move the selection code up but in the center" })
 
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "rename the register" })
+-- keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "rename the register" })
 
 -- clear search highlights
 keymap.set("n", "<leader>.", ":nohl<CR>", { desc = "Clear search highlights" })

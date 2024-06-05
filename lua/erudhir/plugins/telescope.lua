@@ -131,5 +131,9 @@ return {
 		keymap.set("n", ";h", function()
 			builtin.help_tags()
 		end, { desc = "Find help tags" })
+
+		keymap.set("n", ";k", function()
+			builtin.keymaps()
+		end, { desc = "Find keymaps" })
 	end,
 }
