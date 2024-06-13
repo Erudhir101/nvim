@@ -36,7 +36,7 @@ return {
 				"emmet_ls",
 				"html",
 				"lua_ls",
-				"prismals",
+				-- "prismals",
 				-- "pyright",
 				"svelte",
 				"tailwindcss",

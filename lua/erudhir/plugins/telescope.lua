@@ -117,6 +117,10 @@ return {
 		end, { desc = "Find string in cwd" })
 
 		keymap.set("n", ";t", function()
+			builtin.treesitter()
+		end, { desc = "Find tags in files" })
+
+		keymap.set("n", ";h", function()
 			builtin.help_tags()
 		end, { desc = "Find tags in files" })
 
@@ -127,10 +131,6 @@ return {
 		keymap.set("n", ";b", function()
 			builtin.buffers()
 		end, { desc = "Find all buffers" })
-
-		keymap.set("n", ";h", function()
-			builtin.help_tags()
-		end, { desc = "Find help tags" })
 
 		keymap.set("n", ";k", function()
 			builtin.keymaps()
