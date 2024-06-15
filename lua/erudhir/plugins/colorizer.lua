@@ -1,5 +1,6 @@
 return {
 	"norcalli/nvim-colorizer.lua",
+	enabled = false,
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local status, colorizer = pcall(require, "colorizer")

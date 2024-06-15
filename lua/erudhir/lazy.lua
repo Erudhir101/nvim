@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("erudhir.plugins", {
 	-- defaults = { lazy = true },
 	version = "*",
-	install = { colorscheme = { "catppuccin" } },
 	-- install = { missing = 300, colorscheme = { "catppuccin" } },
 	checker = { enabled = true, notify = false },
 	change_detection = {
