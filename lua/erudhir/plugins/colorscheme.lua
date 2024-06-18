@@ -1,5 +1,21 @@
 return {
 	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	priority = 1000,
+	-- 	lazy = false,
+	-- 	config = function()
+	-- 		local status, rose = pcall(require, "rose-pine")
+	-- 		if not status then
+	-- 			return
+	-- 		end
+	--
+	-- 		rose.setup({})
+	-- 		-- load the colorscheme here
+	-- 		vim.cmd("colorscheme rose-pine")
+	-- 	end,
+	-- },
+	-- {
 	-- 	"Mofiqul/dracula.nvim",
 	-- 	config = function()
 	-- 		local status, dracula = pcall(require, "dracula")

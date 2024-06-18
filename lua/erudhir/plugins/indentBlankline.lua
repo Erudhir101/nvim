@@ -1,5 +1,5 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
 	main = "ibl",
-	opts = { indent = { char = "|" } },
+	opts = { exclude = { filetypes = { "dashboard", "nvimTree" } } },
 }
