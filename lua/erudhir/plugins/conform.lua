@@ -23,7 +23,6 @@ return {
 				markdown = { "prettier" },
 				graphql = { "prettier" },
 				lua = { "stylua" },
-				assembly = { "asmfmt" },
 				c = { "clang-format" },
 				-- rust = { "ast_grep" },
 				-- python = { "isort", "black" },

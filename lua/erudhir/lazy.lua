@@ -11,34 +11,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("erudhir.plugins", {
-	-- defaults = { lazy = true },
-	version = "*",
-	-- install = { missing = 300, colorscheme = { "catppuccin" } },
-	checker = { enabled = true, notify = false },
-	change_detection = {
+require("lazy").setup({ import = "erudhir.plugins" }, {
+	checker = {
+		enabled = true,
 		notify = false,
 	},
-	performance = {
-		cache = {
-			enabled = true,
-			-- path = vim.fn.stdpath("cache") .. "/lazy/cache",
-			-- disable_events = { "UIEnter, BufReadPre" },
-		},
-		reset_packpath = true,
-		rtp = {
-			disabled_plugins = {
-				"gzip",
-				"matchit",
-				"matchparen",
-				"netrw",
-				"netrwPlugin",
-				"tarPlugin",
-				"tohtml",
-				"tutor",
-				"zipPlugin",
-			},
-		},
-		debug = false,
+	change_detection = {
+		notify = false,
 	},
 })

@@ -2,10 +2,9 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"j-hui/fidget.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		-- { "folke/neodev.nvim", opts = {} },
+		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -18,7 +17,7 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		-- import fidget plugin
-		require("fidget").setup({})
+		-- require("fidget").setup({})
 
 		local keymap = vim.keymap -- for conciseness
 

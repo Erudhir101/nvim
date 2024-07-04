@@ -52,7 +52,8 @@ return {
 				"stylua", -- lua formatter
 				-- "black", -- python formatter
 				-- "pylint", -- python linter
-				"eslint_d", -- js linter
+				-- "eslint_d", -- js linter
+				"biome", -- js linter and formatter
 			},
 		})
 	end,
