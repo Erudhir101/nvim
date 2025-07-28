@@ -1,2 +1,4 @@
-require("erudhir.core")
-require("erudhir.lazy")
+require("keymaps")
+require("options")
+require("cmd")
+require("plugins")

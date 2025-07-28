@@ -1,4 +1,4 @@
-local opt = vim.opt -- for conciseness
+local opt = vim.o -- for conciseness
 
 -- encoding
 vim.scriptencoding = "utf-8"
@@ -32,7 +32,7 @@ opt.cursorline = true -- highlight the current cursor line
 -- opt.guicursor = "" -- for cursor bug
 
 -- search
-opt.hlsearch = false -- for searching
+opt.hlsearch = true -- for searching
 opt.incsearch = true -- for searching
 
 -- scroll
@@ -46,12 +46,13 @@ opt.breakindent = true
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+opt.conceallevel = 1
 
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 -- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 -- split windows
 opt.splitright = true -- split vertical window to the right
@@ -60,8 +61,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
--- Highlight on yank
-vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = false}")
-
--- tree setting in explore
-vim.cmd("let g:netrw_liststyle = 3")
+-- spell check
+opt.spelllang = "pt_br,en_us"
+opt.spell = false
