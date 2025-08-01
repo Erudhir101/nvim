@@ -1,0 +1,7 @@
+require("eru.plugins.colorscheme")
+require("eru.plugins.completion")
+require("eru.plugins.folke")
+require("eru.plugins.format")
+require("eru.plugins.lsp")
+require("eru.plugins.mini")
+require("eru.plugins.treesitter")

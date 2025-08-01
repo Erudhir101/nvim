@@ -1,4 +1,1 @@
-require("keymaps")
-require("options")
-require("cmd")
-require("plugins")
+require("eru")

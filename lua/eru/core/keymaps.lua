@@ -19,3 +19,8 @@ key.set("n", "N", "Nzzzv", { desc = "move the selection code up but in the cente
 
 -- select all
 key.set("n", "<C-a>", "gg<S-v>G", { desc = "select all text" })
+-- key.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+
+key.set("n", "<space><space>x", "<cmd>source %<CR>")
+key.set("n", "<space>x", ":.lua<CR>")
+key.set("v", "<space>x", ":lua<CR>")

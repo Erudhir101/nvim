@@ -31,7 +31,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = { "gitcommit", "markdown", "text" },
 	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
+		vim.o.wrap = true
+		vim.o.spell = true
+	end,
+})
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
+	callback = function()
+		vim.o.number = false
+		vim.o.relativenumber = false
 	end,
 })
