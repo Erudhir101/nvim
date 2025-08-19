@@ -14,7 +14,6 @@ now(function()
       tailwindcss = {},
       jsonls = {},
       svelte = {},
-
       lua_ls = {
         settings = {
           Lua = {

@@ -40,7 +40,7 @@ now(function()
 		image = { enabled = true },
 		indent = { enabled = true, animate = { enabled = false } },
 		lazygit = { enabled = true },
-		input = { enabled = true },
+		input = { enabled = false },
 		notifier = { enabled = true },
 		quickfile = { enabled = false },
 		scroll = { enabled = false },
