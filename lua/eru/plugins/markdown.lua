@@ -10,6 +10,7 @@ later(function()
   add({ source = "obsidian-nvim/obsidian.nvim" })
   local obsidian = require('obsidian')
   obsidian.setup({
+    ui = { enabled = false },
     legacy_commands = false,
     completion = {
       nvim_cmp = false,
